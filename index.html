@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 80th Birthday, Bev!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink-1:#fff0f5;
+    --pink-2:#ffd6e8;
+    --pink-3:#ffb6d5;
+    --pink-4:#ff8fc0;
+    --pink-deep:#e8558f;
+    --gold:#e8b84b;
+    --text:#6b3350;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Quicksand', sans-serif;
+    color:var(--text);
+    background:linear-gradient(180deg, var(--pink-1) 0%, var(--pink-2) 40%, var(--pink-1) 100%);
+    overflow-x:hidden;
+  }
+
+  /* floating decorations */
+  .floaters{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;}
+  .floater{position:absolute; bottom:-10%; opacity:.55; animation:rise linear infinite;}
+  @keyframes rise{
+    0%{ transform:translateY(0) translateX(0) rotate(0deg); opacity:0;}
+    10%{opacity:.6;}
+    100%{ transform:translateY(-115vh) translateX(20px) rotate(20deg); opacity:0;}
+  }
+
+  section{position:relative; z-index:1;}
+
+  /* HERO */
+  .hero{
+    min-height:92vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+  }
+  .badge{
+    background:radial-gradient(circle at 30% 30%, #fff, var(--pink-3) 70%);
+    border:4px solid #fff;
+    box-shadow:0 10px 30px rgba(232,85,143,.35);
+    width:150px; height:150px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Caveat', cursive;
+    font-size:64px;
+    font-weight:700;
+    color:var(--pink-deep);
+    margin-bottom:18px;
+    animation:pop 2.4s ease-in-out infinite;
+  }
+  @keyframes pop{
+    0%,100%{transform:scale(1) rotate(-2deg);}
+    50%{transform:scale(1.05) rotate(2deg);}
+  }
+  .hero h1{
+    font-family:'Caveat', cursive;
+    font-size:clamp(48px, 9vw, 96px);
+    margin:6px 0 4px;
+    color:var(--pink-deep);
+    text-shadow:2px 2px 0 #fff;
+  }
+  .hero h2{
+    font-weight:600;
+    font-size:clamp(18px, 3vw, 26px);
+    margin:0 0 20px;
+    color:var(--text);
+  }
+  .hero p.sub{
+    max-width:560px;
+    font-size:17px;
+    line-height:1.6;
+    margin:0 auto;
+  }
+  .scroll-hint{
+    margin-top:44px;
+    font-size:14px;
+    color:var(--pink-deep);
+    opacity:.8;
+    animation:bob 1.8s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(8px);}
+  }
+
+  /* SECTION TITLES */
+  .section-title{
+    text-align:center;
+    font-family:'Caveat', cursive;
+    font-size:clamp(34px,6vw,52px);
+    color:var(--pink-deep);
+    margin-bottom:8px;
+  }
+  .section-sub{
+    text-align:center;
+    max-width:520px;
+    margin:0 auto 40px;
+    font-size:15px;
+    opacity:.75;
+  }
+
+  /* LETTER */
+  .letter-wrap{
+    padding:80px 20px;
+    display:flex;
+    justify-content:center;
+  }
+  .letter{
+    background:#fffafc;
+    max-width:680px;
+    width:100%;
+    border-radius:26px;
+    padding:48px 40px;
+    box-shadow:0 20px 50px rgba(232,85,143,.18);
+    border:2px dashed var(--pink-3);
+    position:relative;
+  }
+  .letter::before{
+    content:"💌";
+    position:absolute;
+    top:-28px; left:50%; transform:translateX(-50%);
+    font-size:38px;
+    background:var(--pink-1);
+    padding:4px 14px;
+    border-radius:50%;
+  }
+  .letter p{
+    font-size:17.5px;
+    line-height:1.85;
+    margin:0 0 20px;
+  }
+  .letter .signoff{
+    font-family:'Caveat', cursive;
+    font-size:30px;
+    color:var(--pink-deep);
+    margin-top:30px;
+  }
+  .letter .names{
+    font-family:'Caveat', cursive;
+    font-size:34px;
+    color:var(--pink-deep);
+  }
+  .heart-divider{
+    text-align:center;
+    font-size:20px;
+    color:var(--pink-4);
+    margin:26px 0;
+    letter-spacing:14px;
+  }
+
+  /* GALLERY */
+  .gallery-wrap{
+    padding:20px 20px 90px;
+  }
+  .gallery{
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+    gap:34px;
+    padding:10px;
+  }
+  .polaroid{
+    background:#fff;
+    padding:14px 14px 46px;
+    border-radius:8px;
+    box-shadow:0 12px 24px rgba(107,51,80,.18);
+    transform:rotate(var(--r, 0deg));
+    transition:transform .25s ease, box-shadow .25s ease;
+    position:relative;
+  }
+  .polaroid:nth-child(1){--r:-4deg;}
+  .polaroid:nth-child(2){--r:3deg;}
+  .polaroid:nth-child(3){--r:-2deg;}
+  .polaroid:nth-child(4){--r:4deg;}
+  .polaroid:nth-child(5){--r:-3deg;}
+  .polaroid:nth-child(6){--r:2deg;}
+  .polaroid:hover{
+    transform:rotate(0deg) scale(1.04) translateY(-6px);
+    box-shadow:0 20px 34px rgba(107,51,80,.28);
+    z-index:2;
+  }
+  .polaroid img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    border-radius:3px;
+    display:block;
+  }
+  .polaroid.landscape{
+    grid-column:span 2;
+  }
+  .polaroid.landscape img{
+    height:auto;
+    aspect-ratio:4/3;
+    object-fit:contain;
+    background:var(--pink-1);
+  }
+  @media (max-width:600px){
+    .polaroid.landscape{grid-column:span 1;}
+  }
+  .polaroid figcaption{
+    font-family:'Caveat', cursive;
+    font-size:21px;
+    text-align:center;
+    color:var(--text);
+    margin-top:10px;
+  }
+
+  /* WISHES STRIP */
+  .wishes{
+    padding:70px 20px 90px;
+    text-align:center;
+  }
+  .wishes-grid{
+    max-width:820px;
+    margin:36px auto 0;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:22px;
+  }
+  .wish-card{
+    background:#fff;
+    border-radius:20px;
+    padding:26px 20px;
+    box-shadow:0 10px 24px rgba(232,85,143,.14);
+    border:2px solid var(--pink-2);
+  }
+  .wish-card .emoji{font-size:34px; display:block; margin-bottom:10px;}
+  .wish-card p{margin:0; font-size:15px; line-height:1.6;}
+
+  /* FOOTER */
+  footer{
+    text-align:center;
+    padding:60px 20px 70px;
+  }
+  footer .big{
+    font-family:'Caveat', cursive;
+    font-size:clamp(32px,5vw,46px);
+    color:var(--pink-deep);
+    margin-bottom:10px;
+  }
+  footer .from{
+    font-size:15px;
+    opacity:.7;
+  }
+
+  @media (max-width:480px){
+    .letter{padding:34px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="floaters" id="floaters"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">80</div>
+  <h1>Happy 80th Birthday, Bev!</h1>
+  <h2>Our first friend in America and family forever! 💕</h2>
+  <p class="sub">A little place for all the love we don’t say often enough, made just for you.</p>
+  <div class="scroll-hint">scroll down, there's more ↓</div>
+</section>
+
+<!-- LETTER -->
+<section class="letter-wrap">
+  <div class="letter">
+    <p><strong>Dear Bev,</strong></p>
+    <p>You were our very first friend in the United States, and you made this new, unfamiliar country feel like home from the very beginning. You treated us with so much kindness, and made life here — for us and for our families — just a little bit easier. We love you so, so much.</p>
+    <p>You are such a genuinely kind person. To invite two international students into your home for Thanksgiving, and then turn around and make them your family, forever, giving them your love without asking for anything back — that isn't something everyone has the heart to do. You did. And you'll always hold an enormous place in our hearts.</p>
+    <p>The places we explored together, the foods we tasted for the very first time with you, the experiences we shared, the stories about the mountains that you and Jim taught us — they all hold the most special place in our hearts.</p>
+    <p>You were our first, best, and truest friend in the US — someone we could always, always count on. Thank you for being exactly who you are.</p>
+    <div class="heart-divider">♡ ♡ ♡</div>
+    <p>Stay safe. Stay healthy. We miss you and love you more than words can say.</p>
+    <p class="signoff">With all our love,<br><span class="names">Yoshita &amp; Sowjanya</span></p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-wrap">
+  <h2 class="section-title">A Few of Our Favorite Memories</h2>
+  <p class="section-sub">Just a handful of the moments we've been lucky enough to share with you.</p>
+  <div class="gallery">
+    <figure class="polaroid landscape">
+      <img src="pic1.jpeg" alt="Bev with Yoshita and Sowjanya at a holiday event">
+      <figcaption>Celebrating the season together 🎄</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="pic2.jpeg" alt="A beautifully set dinner table Bev prepared">
+      <figcaption>Every dinner, a work of art</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="pic3.jpeg" alt="Bev and Jim sitting together on a bench">
+      <figcaption>Bev &amp; Jim, always together ❤️</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="pic4.jpeg" alt="Bev exploring a botanical garden">
+      <figcaption>Always up for a new adventure</figcaption>
+    </figure>
+    <figure class="polaroid landscape">
+      <img src="pic5.jpeg" alt="Bev with Yoshita and Sowjanya outdoors">
+      <figcaption>Our favorite person 💕</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="pic6.jpeg" alt="Bev celebrating her 80th birthday in her 'Made in 1946' shirt">
+      <figcaption>80 years of being awesome 🎉</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- WISHES -->
+<section class="wishes">
+  <h2 class="section-title">Wishing You...</h2>
+  <div class="wishes-grid">
+    <div class="wish-card"><span class="emoji">🌸</span><p>A birthday as warm and lovely as you've always been to us.</p></div>
+    <div class="wish-card"><span class="emoji">⛰️</span><p>Many more mountains to learn, with Jim by your side.</p></div>
+    <div class="wish-card"><span class="emoji">🍽️</span><p>Many more meals, memories, and new foods to try together.</p></div>
+    <div class="wish-card"><span class="emoji">💗</span><p>Health, happiness, and endless love — you deserve it all.</p></div>
+    <div class="wish-card"><span class="emoji">🧭</span><p>New places to explore, and stories to bring back and share with us.</p></div>
+    <div class="wish-card"><span class="emoji">😊</span><p>Laughter-filled days, and all the little joys these 80 wonderful years have taught you to notice.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="big">Happy 80th Birthday, Bev!</div>
+  <p>Here's to many more years of adventures together.</p>
+  <p class="from">made with love, by Yoshita &amp; Sowjanya</p>
+</footer>
+
+<script>
+  const emojis = ["🎈","💗","🌸","✨","🎀"];
+  const container = document.getElementById('floaters');
+  const COUNT = 22;
+  for(let i=0;i<COUNT;i++){
+    const el = document.createElement('div');
+    el.className = 'floater';
+    el.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    el.style.left = Math.random()*100 + 'vw';
+    el.style.fontSize = (16 + Math.random()*22) + 'px';
+    el.style.animationDuration = (10 + Math.random()*14) + 's';
+    el.style.animationDelay = (Math.random()*14) + 's';
+    container.appendChild(el);
+  }
+</script>
+
+</body>
+</html>
